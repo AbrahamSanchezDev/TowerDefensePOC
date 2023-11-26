@@ -45,6 +45,8 @@ namespace WorldsDev
 
             agent.autoRepath = true;
 
+            
+
             if (faces)
             {
                 SmileBody = GetComponentInChildren<SkinnedMeshRenderer>().gameObject;
@@ -56,6 +58,13 @@ namespace WorldsDev
             if (animator == null)
             {
                 animator = GetComponentInChildren<Animator>();
+                animator.gameObject.AddComponent<AnimationListener>();
+            }
+
+            var specialSetups = gameObject.GetComponentsInChildren<ISpecialSetup>();
+            for (int i = 0; i < specialSetups.Length; i++)
+            {
+                specialSetups[i].DoSetup();
             }
 
             walkType = WalkType.ToBase;
