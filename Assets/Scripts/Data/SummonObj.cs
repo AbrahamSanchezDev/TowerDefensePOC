@@ -6,6 +6,8 @@ namespace WorldsDev
     public class SummonObj
     {
         public GameObject Prefab;
+        public Sprite Icon;
+        public int Price;
         public SummonData Data;
     }
 }
