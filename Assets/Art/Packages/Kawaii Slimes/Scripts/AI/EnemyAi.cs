@@ -4,7 +4,6 @@ using UnityEngine.AI;
 public enum SlimeAnimationState { Idle,Walk,Jump,Attack,Damage}
 public class EnemyAi : MonoBehaviour
 {
-
     public Face faces;
     public GameObject SmileBody;
     public SlimeAnimationState currentState; 
