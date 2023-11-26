@@ -9,5 +9,6 @@ namespace WorldsDev
         public Sprite Icon;
         public int Price;
         public SummonData Data;
+        public Face Face;
     }
 }

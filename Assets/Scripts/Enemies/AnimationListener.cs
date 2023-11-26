@@ -4,17 +4,17 @@ namespace WorldsDev
 {
     public class AnimationListener : MonoBehaviour, ISpecialSetup
     {
-        private EnemyObj _enemyObj;
+        private MovementController _movementController;
 
         public void DoSetup()
         {
-            _enemyObj = transform.parent.GetComponent<EnemyObj>();
+            _movementController = transform.parent.GetComponent<MovementController>();
         }
 
         public void AlertObservers(string message)
         {
-            if (_enemyObj)
-                _enemyObj.AlertObservers(message);
+            if (_movementController)
+                _movementController.AlertObservers(message);
         }
     }
 }

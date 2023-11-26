@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace WorldsDev
 {
@@ -27,6 +25,6 @@ namespace WorldsDev
         public SummonDb EnemyDB;
         [Header("User UI")]
         public SummonButtonUi SummonButtonUi;
-        public GameObject GameCanvasGo;
+        public GameCanvasUi GameCanvasUi;
     }
 }

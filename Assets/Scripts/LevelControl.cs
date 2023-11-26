@@ -11,6 +11,12 @@ namespace WorldsDev
         private int _maxLength = 7;
         private int _maxLines = 5;
         private Vector3 _slotScale = new Vector3(2, 1.9f, 2);
+        [HideInInspector]
+        public int MaxLines = 5;
+        [HideInInspector]
+        public int SpawnLocation = -14;
+        [HideInInspector]
+        public int SpawnHeight= 1;
 
         protected void Awake()
         {

@@ -12,4 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf0c2330d6658646bfb86f3df0046f5, type: 3}
   m_Name: SummonsDB
   m_EditorClassIdentifier: 
-  SummonObjs: []
+  SummonObjs:
+  - Prefab: {fileID: 3614216147710140506, guid: 07b66eda070c7ef488aa59fd171d5c05, type: 3}
+    Icon: {fileID: 21300000, guid: 11e9641530770524198009318938e527, type: 3}
+    Price: 30
+    Data:
+      Health: 1
+      Speed: 1
+  - Prefab: {fileID: 8060180411435508234, guid: 7a6f8d73067641c4a9c2aee92045ced8, type: 3}
+    Icon: {fileID: 21300000, guid: fde2a64dfb82ac241a63c796e95ec640, type: 3}
+    Price: 50
+    Data:
+      Health: 0
+      Speed: 1
+  - Prefab: {fileID: 8931549660646475585, guid: 5a37a752b07632347b25b6770a3e59df, type: 3}
+    Icon: {fileID: 21300000, guid: 591eabb3f9e3db34eaf1ee2bb2f56c07, type: 3}
+    Price: 100
+    Data:
+      Health: 0
+      Speed: 0.5

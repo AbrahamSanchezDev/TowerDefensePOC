@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 namespace WorldsDev
 {
-    public class EnemyObj : MonoBehaviour
+    public class MovementController : MonoBehaviour
     {
         public Face faces;
         private GameObject SmileBody;
@@ -22,6 +21,8 @@ namespace WorldsDev
         private Material faceMaterial;
         private Vector3 enemyPos;
 
+        public UnityEvent<int> OnDestinationReached = new UnityEvent<int>();
+
         public enum WalkType
         {
             ToBase,
@@ -30,8 +31,28 @@ namespace WorldsDev
 
         private WalkType walkType;
 
-        protected virtual void Awake()
+        protected void Awake()
         {
+            Setup();
+        }
+        private void Setup()
+        {
+            if (animator) return;
+            animator = GetComponent<Animator>();
+            if (animator == null)
+            {
+                animator = GetComponentInChildren<Animator>();
+                animator.gameObject.AddComponent<AnimationListener>();
+            }
+
+            if (animator == null) Debug.LogWarning("NO ANIMATIOR ON " + gameObject.name);
+
+            SecondSetup();
+        }
+
+        public void SecondSetup()
+        {
+            if (agent) return;
             agent = gameObject.AddComponent<NavMeshAgent>();
             agent.speed = 1;
             agent.angularSpeed = 120;
@@ -45,7 +66,6 @@ namespace WorldsDev
 
             agent.autoRepath = true;
 
-            
 
             if (faces)
             {
@@ -54,20 +74,15 @@ namespace WorldsDev
             }
 
 
-            animator = GetComponent<Animator>();
-            if (animator == null)
-            {
-                animator = GetComponentInChildren<Animator>();
-                animator.gameObject.AddComponent<AnimationListener>();
-            }
-
             var specialSetups = gameObject.GetComponentsInChildren<ISpecialSetup>();
-            for (int i = 0; i < specialSetups.Length; i++)
-            {
-                specialSetups[i].DoSetup();
-            }
+            for (var i = 0; i < specialSetups.Length; i++) specialSetups[i].DoSetup();
 
             walkType = WalkType.ToBase;
+        }
+
+        public void ChangeSpeed(float speed)
+        {
+            agent.speed = speed;
         }
 
         public void WalkToNextDestination()
@@ -96,7 +111,7 @@ namespace WorldsDev
             {
                 case SlimeAnimationState.Idle:
 
-                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) return;
+                    if (animator && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) return;
                     StopAgent();
                     if (faces)
                         SetFace(faces.Idleface);
@@ -132,14 +147,14 @@ namespace WorldsDev
                         if (waypoints[0] == null) return;
 
                         agent.SetDestination(waypoints[m_CurrentWaypointIndex]);
-
+                    
                         // agent reaches the destination
                         if (agent.remainingDistance < agent.stoppingDistance)
                         {
                             currentState = SlimeAnimationState.Idle;
-
+                            OnDestinationReached.Invoke(m_CurrentWaypointIndex);
                             //wait 2s before go to next destionation
-                            Invoke(nameof(WalkToNextDestination), 2f);
+                            Invoke(nameof(WalkToNextDestination), 0.1f);
                         }
                     }
 

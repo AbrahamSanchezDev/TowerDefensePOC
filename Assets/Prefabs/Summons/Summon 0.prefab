@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3405090226446784997}
   m_Layer: 0
-  m_Name: Summon 3
+  m_Name: Summon 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

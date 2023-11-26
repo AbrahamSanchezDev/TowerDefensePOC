@@ -12,4 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf0c2330d6658646bfb86f3df0046f5, type: 3}
   m_Name: EnemiesDB
   m_EditorClassIdentifier: 
-  SummonObjs: []
+  SummonObjs:
+  - Prefab: {fileID: 6578136552046986977, guid: b7b79bdf12ab2ac4887a222f05b6f16f, type: 3}
+    Icon: {fileID: 0}
+    Price: 0
+    Data:
+      Health: 5
+      Speed: 1.2
+    Face: {fileID: 0}
+  - Prefab: {fileID: 7064049582415450550, guid: 2b29b03f80b5c54448a0caf26556b068, type: 3}
+    Icon: {fileID: 0}
+    Price: 0
+    Data:
+      Health: 5
+      Speed: 1
+    Face: {fileID: 11400000, guid: 8b8a7554fceb39841840f45a2d8da540, type: 2}
+  - Prefab: {fileID: 3539889184455959610, guid: 16cd83c8bfbc8804c95a2c4f07641fa3, type: 3}
+    Icon: {fileID: 0}
+    Price: 0
+    Data:
+      Health: 5
+      Speed: 1
+    Face: {fileID: 11400000, guid: 8b8a7554fceb39841840f45a2d8da540, type: 2}
