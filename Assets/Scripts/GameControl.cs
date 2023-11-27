@@ -63,8 +63,7 @@ namespace WorldsDev
         public static void ChangeGameState(GameState state)
         {
             CurGameState = state;
-            Debug.Log("GAME " + state);
-
+            //Debug.Log("GAME " + state);
             OnGameStarStateEvent.Invoke(state);
         }
     }

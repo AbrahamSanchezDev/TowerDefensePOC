@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -21,11 +19,6 @@ namespace WorldsDev
         protected void Awake()
         {
             Instance = this;
-            Setup();
-        }
-
-        protected void Setup()
-        {
         }
 
         protected void OnEnable()
