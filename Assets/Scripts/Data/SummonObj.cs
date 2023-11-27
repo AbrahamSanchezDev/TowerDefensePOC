@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace WorldsDev
 {
@@ -10,5 +11,15 @@ namespace WorldsDev
         public int Price;
         public SummonData Data;
         public Face Face;
+
+        public List<SetupBehavior> SetupGo = new List<SetupBehavior>();
+
+        public void DoSetup(GameObject go, SummonData data)
+        {
+            for (int i = 0; i < SetupGo.Count; i++)
+            {
+                SetupGo[i].SetupGo(go,data);
+            }
+        }
     }
 }

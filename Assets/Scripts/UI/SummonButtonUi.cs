@@ -13,6 +13,8 @@ namespace WorldsDev
 
         public UnityEvent OnClickedEvent = new UnityEvent();
 
+        private static UnityEvent<GameObject> _onSelected = new UnityEvent<GameObject>();
+
 
         protected void Awake()
         {
@@ -32,6 +34,21 @@ namespace WorldsDev
             button.onClick.AddListener(Clicked);
         }
 
+        protected void OnEnable()
+        {
+            _onSelected.AddListener(OnSelectedObj);
+        }
+
+        protected void OnDisable()
+        {
+            _onSelected.RemoveListener(OnSelectedObj);
+        }
+
+        private void OnSelectedObj(GameObject go)
+        {
+            Selected(go == gameObject);
+        }
+
 
         public void SetInfo(Sprite icon, string price)
         {
@@ -47,6 +64,7 @@ namespace WorldsDev
         private void Clicked()
         {
             OnClickedEvent.Invoke();
+            _onSelected.Invoke(gameObject);
         }
     }
 }

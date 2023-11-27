@@ -28,6 +28,11 @@ namespace WorldsDev
             if (_moveControl == null) _moveControl = gameObject.AddComponent<MovementController>();
 
             _moveControl.OnDestinationReached.AddListener(OnDestinationReached);
+
+            transform.gameObject.layer = PrefabsRef.EnemyLayer;
+
+            var col = gameObject.AddComponent<BoxCollider>();
+            col.center = Vector3.up / 2;
         }
 
         protected void OnEnable()
@@ -65,12 +70,25 @@ namespace WorldsDev
         public void OnHit(int dmg)
         {
             _curHealth -= dmg;
+            var visuals = PrefabsRef.Prefabs.GameEffects;
+            Instantiate(visuals.OnDamagedRecivedEnemy, transform.position, Quaternion.identity);
+
             if (!Alive()) OnDeath();
         }
 
         public void OnDeath()
         {
+           
+            var visuals = PrefabsRef.Prefabs.GameEffects;
+            Instantiate(visuals.OnDeathEnemy, transform.position, Quaternion.identity);
+            Invoke(nameof(DoDeath),0.1f);
+
             EnemyControl.OnDeathEvent.Invoke(this);
+        }
+
+        private void DoDeath()
+        {
+            Destroy(gameObject);
         }
 
         private void OnDestinationReached(int index)
@@ -93,13 +111,11 @@ namespace WorldsDev
                 case GameState.Pause:
                     break;
                 case GameState.Win:
-                    break;
                 case GameState.Lost:
                     _moveControl.CancelGoNextDestination();
                     _moveControl.currentState = SlimeAnimationState.Idle;
                     break;
             }
-       
         }
     }
 }

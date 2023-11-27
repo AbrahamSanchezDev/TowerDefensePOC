@@ -25,6 +25,9 @@ namespace WorldsDev
         public static UnityEvent<GameState> OnGameStarStateEvent = new UnityEvent<GameState>();
 
 
+        public static LayerMask ClickMask;
+
+
         protected void Awake()
         {
             if (Instance)
@@ -39,6 +42,7 @@ namespace WorldsDev
 
         protected void Setup()
         {
+            ClickMask = PrefabsRef.Prefabs.ClickMask;
         }
 
         public void OnGameStart()

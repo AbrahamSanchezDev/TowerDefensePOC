@@ -64,17 +64,22 @@ namespace WorldsDev
                 case GameState.Lost:
                     break;
             }
-           
         }
 
         private IEnumerator SpawnEnemies()
         {
             while (_curSpawns < _curMaxSpawn)
             {
-                var spawnAmount = Random.Range(0, 5);
+                var spawnAmount = Random.Range(0, 2 + GameControl.Level);
                 for (var i = 0; i < spawnAmount; i++)
                 {
-                    SpawnRandomEnemy();
+                    if (GameControl.CurGameState == GameState.StartedPlaying)
+                    {
+                        SpawnRandomEnemy();
+                        //Stop if already spawned max amount
+                        if (_curSpawns >= _curMaxSpawn) break;
+                    }
+                   
                     //Wait for spawning next enemy
                     yield return new WaitForSeconds(0.2f);
                 }
@@ -101,6 +106,8 @@ namespace WorldsDev
             go.SetActive(false);
             var ai = go.AddComponent<EnemyAI>();
             ai.SetupData(mob.Data, mob.Face);
+            //Do extra setups on game object
+            mob.DoSetup(go, mob.Data);
 
             go.SetActive(true);
         }
@@ -108,16 +115,12 @@ namespace WorldsDev
         private void OnDeath(EnemyAI theAi)
         {
             _curDeaths++;
-            if (_curDeaths >= _curMaxSpawn) GameControl.Instance.OnGameWin();
+            if (_curDeaths >= _curMaxSpawn)  GameControl.Instance.OnGameWin();
         }
 
         public void OnDestinationReached(int index)
         {
-            if (index == 0)
-            {
-
-                GameControl.Instance.OnGameOver();
-            }
+            if (index == 0) GameControl.Instance.OnGameOver();
         }
     }
 }

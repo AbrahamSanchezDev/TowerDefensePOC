@@ -25,6 +25,8 @@ namespace WorldsDev
             AddComponent<PlayerControl>();
             AddComponent<EnemyControl>();
 
+            AddComponent<PlayerInputs>();
+
 
             Invoke(nameof(StartGame), StartGameOn);
         }

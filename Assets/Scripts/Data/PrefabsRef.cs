@@ -26,5 +26,15 @@ namespace WorldsDev
         [Header("User UI")]
         public SummonButtonUi SummonButtonUi;
         public GameCanvasUi GameCanvasUi;
+
+        [Header("Masks")]
+        public LayerMask ClickMask;
+        public LayerMask EnemyMask;
+        public static int EnemyLayer = 6;
+
+        public LayerMask summonMask;
+        public static int SummonLayer = 7;
+
+        [Header("Visuals")] public GameEffects GameEffects;
     }
 }

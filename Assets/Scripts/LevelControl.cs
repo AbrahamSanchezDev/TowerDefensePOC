@@ -8,15 +8,13 @@ namespace WorldsDev
     {
         public static LevelControl Instance;
         private Vector3 _temp;
-        private int _maxLength = 7;
-        private int _maxLines = 5;
+        public int _maxLength = 7;
+        public int _maxLines = 5;
         private Vector3 _slotScale = new Vector3(2, 1.9f, 2);
-        [HideInInspector]
-        public int MaxLines = 5;
-        [HideInInspector]
-        public int SpawnLocation = -14;
-        [HideInInspector]
-        public int SpawnHeight= 1;
+        [HideInInspector] public int MaxLines = 5;
+        [HideInInspector] public int SpawnLocation = -14;
+        [HideInInspector] public int SpawnHeight = 1;
+        [HideInInspector] public Vector3 SummonsRotation = new Vector3(0, 180, 0);
 
         protected void Awake()
         {
@@ -28,6 +26,7 @@ namespace WorldsDev
             Instance = this;
             CreateSlots();
         }
+
         //Create the colliders to detect when the player wants to spawn something at that position
         private void CreateSlots()
         {
@@ -43,9 +42,12 @@ namespace WorldsDev
                     cube.transform.position = _temp;
                     cube.transform.localScale = _slotScale;
                     cube.transform.SetParent(transform, true);
+
+                    cube.AddComponent<SummonSlot>();
                 }
             }
         }
+
         //Gets the position for the given line
         public Vector3 GetLinePosition(int line)
         {
@@ -54,6 +56,7 @@ namespace WorldsDev
             _temp.z = 0;
             return _temp;
         }
+
         //Set the value of the temp vector to find the x position that represents the line from the upper line to the lowest 
         private void UpdateTempToLine(int line)
         {
@@ -76,6 +79,5 @@ namespace WorldsDev
                     break;
             }
         }
-
     }
 }

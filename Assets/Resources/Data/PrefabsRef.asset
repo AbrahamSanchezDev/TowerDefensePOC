@@ -16,3 +16,13 @@ MonoBehaviour:
   EnemyDB: {fileID: 11400000, guid: ee85ba6cb33d0ed4980ae8dc89528205, type: 2}
   SummonButtonUi: {fileID: 5734072028674235153, guid: dbb1684c833cc834da4eb980f7bf8a8d, type: 3}
   GameCanvasUi: {fileID: 7825532264704903180, guid: 2ed303fe9ee7b8549a9113a2bb263323, type: 3}
+  ClickMask:
+    serializedVersion: 2
+    m_Bits: 1
+  EnemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  summonMask:
+    serializedVersion: 2
+    m_Bits: 0
+  GameEffects: {fileID: 11400000, guid: fa7fa9047ddc18f48a02fdeab8234667, type: 2}

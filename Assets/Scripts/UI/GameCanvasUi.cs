@@ -25,13 +25,22 @@ namespace WorldsDev
             _summonsTransform = transform.Find("Summons");
         }
 
-        public void AddSummon(Sprite Icon, int Price, UnityAction onSelected)
+        public void UpdateMoney(int amount)
         {
-            var but = Instantiate(PrefabsRef.Prefabs.SummonButtonUi);
+            _moneyText.text = $"${amount}";
+        }
+
+        public void AddSummon(Sprite Icon, int Price, UnityAction onSelected, int index)
+        {
+            var but = Instantiate(PrefabsRef.Prefabs.SummonButtonUi, _summonsTransform);
             but.Setup();
 
             but.SetInfo(Icon, $"${Price}");
             but.OnClickedEvent.AddListener(onSelected);
+            if (index == 0)
+            {
+                but.Selected(true);
+            }
         }
     }
 }
