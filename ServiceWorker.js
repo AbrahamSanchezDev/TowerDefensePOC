@@ -1,9 +1,9 @@
 const cacheName = "WorldsDev-TowerDefensePOC-0.1";
 const contentToCache = [
     "Build/TowerDefenderPOC.loader.js",
-    "Build/TowerDefenderPOC.framework.js.gz",
-    "Build/TowerDefenderPOC.data.gz",
-    "Build/TowerDefenderPOC.wasm.gz",
+    "Build/TowerDefenderPOC.framework.js",
+    "Build/TowerDefenderPOC.data",
+    "Build/TowerDefenderPOC.wasm",
     "TemplateData/style.css"
 
 ];
