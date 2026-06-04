@@ -18,5 +18,12 @@ namespace WorldsDev
 
             dmg.Setup(data.Damage, data.Speed, HitMask, Distance);
         }
+
+        public override void SetupAudio(AudioClip sfx, GameObject go)
+        {
+            base.SetupAudio(sfx, go);
+            var dmg = go.GetComponent<DamageEnemyObj>();
+            dmg.SetupAudio(sfx);
+        }
     }
 }

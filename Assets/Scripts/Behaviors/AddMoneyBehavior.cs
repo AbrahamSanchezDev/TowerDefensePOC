@@ -8,14 +8,20 @@ namespace WorldsDev
         [Range(1, 100)] public int MoneyToAdd = 1;
 
         public GameObject OnGenerateMoneyEffect;
-        
 
         public override void SetupGo(GameObject go, SummonData data)
         {
             base.SetupGo(go, data);
 
             var money = go.AddComponent<AddMoneyObj>();
-            money.Setup(MoneyToAdd, data.Speed,OnGenerateMoneyEffect);
+            money.Setup(MoneyToAdd, data.Speed, OnGenerateMoneyEffect);
+        }
+
+        override public void SetupAudio(AudioClip sfx, GameObject go)
+        {
+            base.SetupAudio(sfx, go);
+            var money = go.GetComponent<AddMoneyObj>();
+            money.SetupAudio(sfx);
         }
     }
 }

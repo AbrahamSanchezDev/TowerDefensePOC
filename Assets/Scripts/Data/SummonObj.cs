@@ -14,11 +14,14 @@ namespace WorldsDev
 
         public List<SetupBehavior> SetupGo = new List<SetupBehavior>();
 
+        public AudioClip OnActionSfx;
+
         public void DoSetup(GameObject go, SummonData data)
         {
             for (int i = 0; i < SetupGo.Count; i++)
             {
                 SetupGo[i].SetupGo(go,data);
+                SetupGo[i].SetupAudio(OnActionSfx, go);
             }
         }
     }

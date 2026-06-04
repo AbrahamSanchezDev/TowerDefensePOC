@@ -25,6 +25,7 @@ MonoBehaviour:
     Face: {fileID: 0}
     SetupGo:
     - {fileID: 11400000, guid: b56062aa4baece74a85a423faad12a2e, type: 2}
+    OnActionSfx: {fileID: 8300000, guid: c48a972d3d024c2408a3331750786a29, type: 3}
   - Prefab: {fileID: 8060180411435508234, guid: 7a6f8d73067641c4a9c2aee92045ced8, type: 3}
     Icon: {fileID: 21300000, guid: fde2a64dfb82ac241a63c796e95ec640, type: 3}
     Price: 50
@@ -37,6 +38,7 @@ MonoBehaviour:
     Face: {fileID: 0}
     SetupGo:
     - {fileID: 11400000, guid: 5bc4d9311741d8144b85dc6ca5b397b9, type: 2}
+    OnActionSfx: {fileID: 8300000, guid: 4ef847b9581f57a43a2ed14ab7e6d52e, type: 3}
   - Prefab: {fileID: 8931549660646475585, guid: 5a37a752b07632347b25b6770a3e59df, type: 3}
     Icon: {fileID: 21300000, guid: 591eabb3f9e3db34eaf1ee2bb2f56c07, type: 3}
     Price: 100
@@ -49,3 +51,4 @@ MonoBehaviour:
     Face: {fileID: 0}
     SetupGo:
     - {fileID: 11400000, guid: 5bc4d9311741d8144b85dc6ca5b397b9, type: 2}
+    OnActionSfx: {fileID: 8300000, guid: 3061c7b9b32d894478e4126ccce25ca3, type: 3}

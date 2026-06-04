@@ -15,6 +15,10 @@ namespace WorldsDev
 
         private IDamageable _damageable;
 
+        private AudioClip _onActionSfx;
+
+        private AudioSource _audioSource;
+
 
         protected void Start()
         {
@@ -28,6 +32,21 @@ namespace WorldsDev
             _hitMask = mask;
             _hitDistance = distance;
             _damageable = gameObject.GetComponent<IDamageable>();
+        }
+
+        public void SetupAudio(AudioClip sfx)
+        {
+            _onActionSfx = sfx;
+            _audioSource = gameObject.GetComponent<AudioSource>();
+            if (!_audioSource)
+                _audioSource = gameObject.AddComponent<AudioSource>();
+
+            if (_onActionSfx)
+            {
+                _audioSource.clip = _onActionSfx;
+                _audioSource.loop = false;
+                _audioSource.volume = 0.1f;
+            }
         }
 
         private IEnumerator DoDamage()
@@ -49,6 +68,8 @@ namespace WorldsDev
                         //Debug.Log("Damaged " + hit.transform.name);
                         var selectable = hit.transform.gameObject.GetComponent<IDamageable>();
                         selectable?.OnHit(_damageAmount);
+                        if (_audioSource && _onActionSfx)
+                            _audioSource.Play();
                     }
                 }
                 yield return delay;

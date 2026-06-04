@@ -12,6 +12,10 @@ namespace WorldsDev
 
         private GameObject _onAddMoneyEffect;
 
+        private AudioClip _onActionSfx;
+
+        private AudioSource _audioSource;
+
         protected void Awake()
         {
             _self = gameObject.GetComponent<IDamageable>();
@@ -22,6 +26,20 @@ namespace WorldsDev
             Amount = amount;
             Speed = speed;
             _onAddMoneyEffect = effectGo;
+        }
+
+        public void SetupAudio(AudioClip sfx)
+        {
+            _onActionSfx = sfx;
+            if (_onActionSfx)
+            {
+                _audioSource = gameObject.GetComponent<AudioSource>();
+                if (!_audioSource)
+                    _audioSource = gameObject.AddComponent<AudioSource>();
+                _audioSource.clip = _onActionSfx;
+                _audioSource.loop = false;
+                _audioSource.volume = 0.1f;
+            }
         }
 
         protected void Start()
@@ -42,6 +60,8 @@ namespace WorldsDev
                     pos.y += 1.5f;
                     if (_onAddMoneyEffect)
                         Instantiate(_onAddMoneyEffect, pos, Quaternion.identity);
+                    if (_audioSource && _onActionSfx)
+                        _audioSource.Play();
                 }
 
                 yield return delay;
