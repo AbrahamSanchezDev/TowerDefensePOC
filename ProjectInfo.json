@@ -1,0 +1,20 @@
+{
+  "id": "tower-defense-poc",
+  "title": "Tower Defense POC",
+  "subtitle": "Interview-ready Unity tower defense prototype with modular gameplay systems.",
+  "techBadge": "Unity",
+  "gifUrl": "/games/tower-defense-poc.gif",
+  "repoUrl": "https://github.com/AbrahamSanchezDev/TowerDefensePOC",
+  "demoUrl": "https://abrahamsanchezdev.github.io/TowerDefensePOC/",
+  "challenge": "Built as a Unity job interview challenge to deliver a clean, playable tower defense prototype in a short development window. The focus was on creating organized systems, maintainable code, and a complete game loop within a compact timeframe.",
+  "architecture": "Modular Unity architecture with Singleton game-state control, event-driven communication, and prefab/scriptable-object based systems.",
+  "techStack": [
+    "Unity",
+    "C#",
+    "Unity UI",    
+    "TextMeshPro",
+    "AudioSource"
+  ],
+  "codeSnippetTitle": "Main Scene Setup and State Initialization",
+  "codeSnippet": "protected void Awake()\n{\n    GameControl.Level++;\n    Setup();\n}\n\nprotected void Setup()\n{\n    GameControl.ChangeGameState(GameState.Idle);\n    AddComponent<LevelControl>();\n    CreateUi();\n    AddComponent<PlayerControl>();\n    AddComponent<EnemyControl>();\n}"
+}
